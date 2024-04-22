@@ -29,4 +29,5 @@ public class HomePage {
     public WebElement lastPages;
     @FindBy(xpath = "//input[@gtm-id='AddToCartATC']")
     public WebElement addToCartButton;
+    //
 }
