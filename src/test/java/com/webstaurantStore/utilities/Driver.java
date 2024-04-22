@@ -8,7 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 
 public class Driver {
-
     //I've crafted a private constructor to restrict access to this object.
     private Driver() {
     }
@@ -45,7 +44,6 @@ public class Driver {
     I've implemented a new method, closeDriver(), which utilizes the .quit() method to gracefully close the browser.
      After closing the browser, it resets the driver value to null, ensuring proper cleanup and resource management.
      */
-
     public static void closeDriver() {
         if (driver != null) {
 

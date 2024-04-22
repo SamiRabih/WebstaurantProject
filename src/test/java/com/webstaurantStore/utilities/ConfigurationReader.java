@@ -27,12 +27,9 @@ public class ConfigurationReader {
             e.printStackTrace();
         }
     }
-
     //I create a utility method to use the object to read
     //I Use "properties" object to read from the file(read properties)
     public static String getProperty(String keyword) {
         return properties.getProperty(keyword);
-
     }
-
 }

@@ -36,28 +36,23 @@ public class WebstaurantStoreSearchTest {
     public void Test1() {
 
         homePage.searchBox.sendKeys("stainless work table" + Keys.ENTER);
-
+        int lastPage = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//a[@aria-label='last page, page 9']")).getText());
         try {
-
-            for (int i = 0; i <= homePage.pageLists.size(); i++) {
-
+            for (int i = 1; i <= lastPage; i++) {
                 for (WebElement eachItem : homePage.itemsList) {
-
                     String linkText = eachItem.getText();
-
                     softAssertions.assertThat(linkText.contains("Table"));
-
                     if (!linkText.contains("Table")) {
                         System.out.println("Element does not contain \"Table\" = " + linkText);
                     }
                 }
-                actions.moveToElement(homePage.rightArrow).click().perform();
+                if (i < lastPage) {
+                    actions.moveToElement(homePage.rightArrow).click().perform();
+                }
             }
-
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
-
     }
 
     @DisplayName("adding last element to cart and empty cart")
@@ -74,7 +69,5 @@ public class WebstaurantStoreSearchTest {
         homePage.emptyCartElement2.click();
         String actualEmptyCartMessage = homePage.cartEmptyMessage.getText();
         Assertions.assertEquals("Your cart is empty.", actualEmptyCartMessage, "Empty cart message verification failed");
-
     }
-
 }
