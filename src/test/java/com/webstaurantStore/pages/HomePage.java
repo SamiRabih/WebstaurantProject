@@ -30,5 +30,5 @@ public class HomePage {
     @FindBy(xpath = "//input[@gtm-id='AddToCartATC']")
     public WebElement addToCartButton;
     //
-    //test
+    //test2
 }
