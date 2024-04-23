@@ -4,15 +4,12 @@ import com.webstaurantStore.pages.HomePage;
 import com.webstaurantStore.utilities.ConfigurationReader;
 import com.webstaurantStore.utilities.Driver;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.interactions.Actions;
-
 import java.util.List;
 import java.util.NoSuchElementException;
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class WebstaurantStoreSearchTest {
     HomePage homePage = new HomePage();
@@ -22,7 +19,6 @@ public class WebstaurantStoreSearchTest {
     @BeforeAll
     public static void setUp() {
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-
     }
 
     @AfterAll
@@ -36,7 +32,7 @@ public class WebstaurantStoreSearchTest {
     public void Test1() {
 
         homePage.searchBox.sendKeys("stainless work table" + Keys.ENTER);
-        int lastPage = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//a[@aria-label='last page, page 9']")).getText());
+        int lastPage = Integer.parseInt(homePage.lastPages.getText());
         try {
             for (int i = 1; i <= lastPage; i++) {
                 for (WebElement eachItem : homePage.itemsList) {
@@ -59,7 +55,7 @@ public class WebstaurantStoreSearchTest {
     @Test
     @Order(2)
     public void test2() {
-        List<WebElement> lastPageList = Driver.getDriver().findElements(By.xpath("//span[@data-testid ='itemDescription']"));
+        List<WebElement> lastPageList = homePage.itemsList;
         WebElement lastItemOnLIST = lastPageList.get(lastPageList.size() - 1);
         lastItemOnLIST.click();
 

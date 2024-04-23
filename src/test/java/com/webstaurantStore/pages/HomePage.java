@@ -4,9 +4,7 @@ import com.webstaurantStore.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
-
 public class HomePage {
     public HomePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -14,10 +12,8 @@ public class HomePage {
 
     @FindBy(id = "searchval")
     public WebElement searchBox;
-    @FindBy(xpath = "//div//span[@data-testid ='itemDescription']")
+    @FindBy(xpath = "//span[@data-testid ='itemDescription']")
     public List<WebElement> itemsList;
-    @FindBy(xpath = "//li[@class='inline-block leading-4 align-top']")
-    public List<WebElement> pageLists;
     @FindBy(xpath = "//a[.='View Cart']")
     public WebElement viewCartElement;
     @FindBy(xpath = "//button[.='Empty Cart'][1]")
@@ -32,5 +28,4 @@ public class HomePage {
     public WebElement lastPages;
     @FindBy(xpath = "//input[@gtm-id='AddToCartATC']")
     public WebElement addToCartButton;
-
 }
